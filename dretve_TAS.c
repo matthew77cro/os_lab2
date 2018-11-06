@@ -2,13 +2,18 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+#define TAS(ZASTAVICA) __atomic_test_and_set (&ZASTAVICA, __ATOMIC_SEQ_CST)
+
+char zastavica = 0;
 int A = 0;
 
 void *task(void* m){
 
     int i;
     for(i=0;i<*((int*)m);i++){
+        while(TAS(zastavica)==1);
         A++;
+        zastavica=0;
     }
 
 }
@@ -35,3 +40,4 @@ int main(int argc, char** argv){
     printf("A=%d\n",A);
 
 }
+
