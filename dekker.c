@@ -5,11 +5,12 @@
 #include <sys/wait.h>
 #include <stdatomic.h>
 
+#define ZASTAVICA 0
+#define PRAVO 2
+#define VRIJEDNOST 3
+
 int id; /* identifikacijski broj segmenta */
 atomic_int *A;
-int ZASTAVICA = 0;
-int PRAVO = 2;
-int VRIJEDNOST = 3;
 
 void dekker(int id, int n){
 
