@@ -1,0 +1,51 @@
+
+<!-- saved from url=(0056)http://zemris.fer.hr/predmeti/os/pripreme/z2_Dekker.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<title>Dekkerov postupak - upute</title>
+</head>
+<body lang="EN-GB" style="">
+<h2><b>Dekkerov postupak međusobnog isključivanja</b></h2><p>Uz pomoć Dekkerovog 
+algoritma moguće je sinkronizirati dvije dretve ili dva procesa koji primjerice 
+izgledaju ovako:</p>
+
+<pre><u>proces</u> proc(<b>i</b>){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* <b>i</b>&nbsp; [0,1] */
+   ponavljaj{
+   &nbsp;&nbsp; <b>uđi u kritični odsječak</b>
+      K.O.;
+    &nbsp; <b>izađi iz kritičnog odsječka
+</b>      N.K.O.;
+   }dok je zadovoljen(uvjet);
+}</pre>
+<h3><b>Dekkerov algoritam:</b></h3>
+
+<pre><u>zajedničke varijable</u>: PRAVO, ZASTAVICA[0..1]
+&nbsp;<o:p></o:p>
+<u>funkcija</u> uđi_u_kritični_odsječak(i,j)
+{
+   ZASTAVICA[i] = 1
+  &nbsp;<u>dok je</u> ZASTAVICA[j]&lt;&gt;0 <u>čini</u> {
+      <u>ako je</u> PRAVO==j <u>onda</u> {
+         ZASTAVICA[i] = 0
+         <u>dok je</u> PRAVO==j <u>čini</u> {
+            <u>ništa</u>
+         }
+         ZASTAVICA[i] = 1
+      }
+   }
+}
+&nbsp;
+<u>funkcija</u> izađi_iz_kritičnog_odsječka(i,j)
+{
+   PRAVO = j
+   ZASTAVICA[i] = 0
+}</pre>
+<p style=""><b>Dodatne upute:</b></p>
+<p><font color="#FF0000">Ako se program rješava s procesima tada treba zajedničke varijable tako organizirati da se prostor za njih zauzme odjednom i podijeli među njima. Ovo je nužno zbog ograničenog broja segmenata i velikog broja korisnika.</font></p><p>Ovisno o opterećenju računala i broju procesa koji se pokreću, a da bi se vidjele razlike prilikom izvođenja programa može 
+se usporiti izvršavanje programa sa:</p>
+
+<pre>sleep(1);</pre><p>na kraju kritičnog odsječka (K.O.).</p>
+
+<p><b><a href="http://zemris.fer.hr/predmeti/os/pripreme/z2_Lamport.html#Problem">Problemi zbog izvođenja instrukcija 
+"preko reda"</a></b></p>
+
+</body></html>
