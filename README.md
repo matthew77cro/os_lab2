@@ -327,7 +327,7 @@ resurse (semafore i zajednički spremnik) prije no što program završi.</font><
 <b><hr><h2 align="left">2. Višedretvenost</h2>
 </b></font><p align="JUSTIFY">Povijest višedretvenog programiranja počinje 60-tih, dok se njihova implementacija na UNIX sustavima pojavljuje sredinom 80-tih godina, a na ostalim sustavima nešto kasnije. Ideja višedretvenog programiranja jest u tome da se program sastoji od više jedinica koje se samostalno mogu izvoditi. Programer ne mora brinuti o redoslijedu njihova izvođenja, već to obavlja sam operacijski sustav. Štoviše, ukoliko je to višeprocesorski sustav, onda se neke jedinice-dretve mogu izvoditi istovremeno. 
 Komunikacija među dretvama je jednostavna i brža u odnosu na komunikaciju među procesima, jer se obavlja preko zajedničkog adresnog prostora, te se može obaviti bez uplitanja operacijskog sustava. </p>
-<p align="CENTER"><img border="0" src="./Višezadaćni rad_files/viseza2.gif"></p>
+<p align="CENTER"><img border="0" src="https://github.com/matthew77cro/os_lab2/blob/master/pic/visezad.gif"></p>
 <i>
 <b><p align="center">Slika: Arhitektura višedretvenog sustava</p>
 </b></i>
